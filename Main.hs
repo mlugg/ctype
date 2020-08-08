@@ -282,7 +282,7 @@ pPrintCType t = case t of
 main :: IO ()
 main =
   TIO.getLine <&>
-  parse typeOrDecl "(stdin)" >>=
+  parse (typeOrDecl <* eof) "(stdin)" >>=
   \case
     Left e -> putStrLn $ errorBundlePretty e
     Right (x, t) -> do
